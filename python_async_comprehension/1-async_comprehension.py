@@ -1,15 +1,12 @@
 #!/usr/bin/env python3
-"""
-funtion async_comprehension
-"""
+
+import asyncio
 from typing import List
 
 async_generator = __import__("0-async_generator").async_generator
 
 
 async def async_comprehension() -> List[float]:
-    """async comprehension"""
-    result = []
-    async for i in async_generator():
-        result.append(i)
+    """Function that return a list"""
+    result = [result async for result in async_generator()]
     return result
