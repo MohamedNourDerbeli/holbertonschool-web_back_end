@@ -2,7 +2,7 @@
 """
 Deletion-resilient hypermedia pagination
 
-This script implements a deletion-resilient hypermedia
+This script implements a deletion resilient hypermedia
 pagination system for a database of popular baby names.
 """
 
