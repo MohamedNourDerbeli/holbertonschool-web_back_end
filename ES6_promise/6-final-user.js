@@ -13,12 +13,11 @@ export default async function handleProfileSignup (
 			status: 'Done',
 			value: user
 		});
-    return list
   } catch (error) {
 		list.push({
 			status: 'rejected',
 			value: error.toString()
 		});
-		return list;
   }
+	return list;
 }
