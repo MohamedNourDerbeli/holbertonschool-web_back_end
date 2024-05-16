@@ -4,8 +4,9 @@ export default function handleProfileSignup() {
     uploadPhoto().then(photo => photo.body),
     createUser().then(user => user)
   ])
-    .then(([photo, user]) => {
-      console.log(photo, user.firstName, user.lastName);
-    })
+  .then(([photoBody, userBody]) => {
+    // Log firstName and lastName from both bodies
+    console.log(`firstName: ${photoBody.firstName}, lastName: ${userBody.lastName}`);
+  })
     .catch(error => { console.log("Signup system offline") });
 }
