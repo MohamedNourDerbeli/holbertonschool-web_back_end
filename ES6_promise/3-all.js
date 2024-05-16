@@ -1,11 +1,9 @@
 const { uploadPhoto, createUser } = require('./utils');
 
-export default async function handleProfileSignup() {
-  return Promise.all([
-    uploadPhoto().then(photoResult => photoResult.body),
-    createUser().then(userResult => userResult)])
-    .then(([photo, user]) => {
-      console.log(`${photo} ${user.firstName} ${user.lastName}`);
+export default function handleProfileSignup() {
+  return Promise.all([uploadPhoto(), createUser()])
+    .then((ressult) => {
+      console.log(`${ressult[0].body} ${ressult[1].firstName} ${ressult[1].lastName}`);
     })
-    .catch(error => console.error("Signup system offline"));
-};
+    .catch(() => console.log("Signup system offline"));
+}
