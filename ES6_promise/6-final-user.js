@@ -8,18 +8,13 @@ export default async function handleProfileSignup (
   const list = []
   try {
     const [signupResult] = await signUpUser(firstName, lastName)
-    const [photoUploadError] = await uploadPhoto(fileName)
-    return [
-      {
-        status: 'fulfilled',
-        value: signupResult
-      },
-      {
-        status: 'rejected',
-        value: photoUploadError
-      }
-    ]
+    list.push({ status: 'fulfilled', value: signupResult })
+    await uploadPhoto(fileName)
   } catch (error) {
-    return [{ status: 'rejected', value: error }]
+    list.push({
+      status: 'rejected',
+      value: error.toString()
+    })
   }
+  return list
 }
