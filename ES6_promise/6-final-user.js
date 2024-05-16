@@ -7,17 +7,19 @@ export default async function handleProfileSignup (
 ) {
   const list = []
   try {
-    const user = await signUpUser(firstName, lastName)
-    await uploadPhoto(user, fileName)
-		list.push({
-			status: 'Done',
-			value: user
-		});
+    const [signupResult] = await signUpUser(firstName, lastName)
+    const [photoUploadError] = await uploadPhoto(fileName)
+    return [
+      {
+        status: 'fulfilled',
+        value: signupResult
+      },
+      {
+        status: 'rejected',
+        value: photoUploadError
+      }
+    ]
   } catch (error) {
-		list.push({
-			status: 'rejected',
-			value: error.toString()
-		});
+    return [{ status: 'rejected', value: error }]
   }
-	return list;
 }
