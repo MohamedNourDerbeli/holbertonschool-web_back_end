@@ -1,8 +1,3 @@
-export default function getStudentIdsSum(listStudents) {
-  if (!Array.isArray(listStudents)) {
-    return [];
-  }
-  return listStudents.reduce((accumulator, item) => {
-    return accumulator += item.id;
-  }, 0)
-}
+const getStudentIdsSum = (list) => list.reduce((total, student) => total + student.id, 0);
+
+export default getStudentIdsSum;
